@@ -19,10 +19,12 @@ public class TrabajoFinalJava {
     public static void main(String[] args) {
         // TODO code application logic here
         Scanner entrada = new Scanner(System.in);
-        boolean bandera = true;
-        int salida;
+        String salida;
+        String ciclo;
+        String cadenaFinal="";
         int contador = 0;
-        int opcion;
+        int opciones;
+        boolean bandera = true;
         while (bandera) {
             System.out.printf("Selecciona 1 y creamos una cuenta de Facebook\n"
                     + "Selecciona 2 y creamos una cuenta de Twitter\n"
@@ -31,50 +33,56 @@ public class TrabajoFinalJava {
                     + "Selecciona 5 y creamos una cuenta de Signal\n"
                     + "Selecciona 6 y creamos una cuenta de Instagram\n"
                     + "Selecciona 7 y creamos una cuenta de Flickr\n> ");
-            opcion = entrada.nextInt();
-            switch (opcion) {
+            opciones = entrada.nextInt();
+            switch (opciones) {
                 case 1:
-                    System.out.printf(crearFacebook());
+                    cadenaFinal= Facebook();
+                    System.out.printf(cadenaFinal);
                     break;
                 case 2:
-                    crarTwitter();
+                    Twitter();
                     break;
                 case 3:
-                    System.out.println(crearWhatsapp());
+                    cadenaFinal= Whatsapp();
+                    System.out.println(cadenaFinal);
                     break;
                 case 4:
-                    crearTelegram();
+                    Telegram();
                     break;
-                case 5:
-                    System.out.println(crearSignal());
+                case 5: 
+                    cadenaFinal= Signal();
+                    System.out.println(cadenaFinal);
                     break;
                 case 6:
-                    crearInstagram();
+                    Instagram();
                     break;
-                case 7:
-                    System.out.println(crearFlickr());
+                case 7:   
+                    cadenaFinal= Flickr();
+                    System.out.println(cadenaFinal);
                     break;
                 default:
-                    System.out.println("Opcion no existente");
+                    System.out.println("Esta opcion no existente ");
             }
-            contador = contador + 1;
-            System.out.print("Ingrese >1< si desea salir del ciclo\n>");
-            salida = entrada.nextInt();
-            if (salida == 1) {
+            entrada.nextLine();
+            contador = contador + 1;          
+            System.out.print("Ingrese >Salir< si desea salir del ciclo\n");
+            salida = entrada.nextLine();
+            salida = salida.toLowerCase();
+            if (salida.equals("salir")) {
                 bandera = false;
+                
             }
         }
-        System.out.printf("La campaña es una: %s\n", obtenerMensaje(contador));
+        System.out.printf("%s\n", obtenerMensaje(contador));
     }
-
-    public static String crearFacebook() {
+    public static String Facebook() {
         Scanner entrada = new Scanner(System.in);
-        String resumen;
-        String nombre;
-        int edad;
-        String pais;
-        String ciudad;
-        String correo;
+        String  mensaje;
+        String  nombre;
+        String  pais;
+        String  ciudad;
+        String  correo;
+        int     edad;
         System.out.println("Creemos una cuenta de >>Facebook<<");
         System.out.print("Nombre de usuario:\n> ");
         nombre = entrada.nextLine();
@@ -87,30 +95,30 @@ public class TrabajoFinalJava {
         pais = entrada.nextLine();
         System.out.print("Correo electronico:\n> ");
         correo = entrada.nextLine();
-        resumen = String.format("Cuenta de Facebook \nUsuario "
+        mensaje = String.format("Cuenta de Facebook \nUsuario "
                 + " %s\nEdad : %d\nCiudad en la que reside: %s\n"
                 + "Pais: %s\nCorreo electronico: %s\n",
                 nombre, edad, ciudad, pais, correo);
-        return resumen;
+        return mensaje;
     }
 
-    public static void crarTwitter() {
+    public static void Twitter() {
         Scanner entrada = new Scanner(System.in);
-        String nombre;
+        String correo;
         String nombresCompletos;
-        int edad;
-        String apellidos;
-        String idioma;
+        int    edad;
+        String nombre;
+        String apellido;
         String pais;
         String ciudad;
-        String correo;
-        System.out.println("<< Cuenta de Twitter >>");
+        String idioma;
+        System.out.println("Creemos una cuenta de >>Twitter<<");
         System.out.print("Nombre de usuario:\n> ");
         nombre = entrada.nextLine();
         System.out.print("Nombres completos:\n> ");
         nombresCompletos = entrada.nextLine();
         System.out.print("Apellidos Completos:\n> ");
-        apellidos = entrada.nextLine();
+        apellido = entrada.nextLine();
         System.out.print("Edad:\n> ");
         edad = entrada.nextInt();
         System.out.print("Ciudad en la que resides:\n> ");
@@ -128,12 +136,12 @@ public class TrabajoFinalJava {
                 + "la que resides: %s\nPais del usuario:"
                 + " %s\nPais: %s"
                 + "\nCorreo electronico: %s\n", nombre, nombresCompletos,
-                apellidos, edad, ciudad, pais, idioma, correo);
+                apellido, edad, ciudad, pais, idioma, correo);
     }
 
-    public static String crearWhatsapp() {
+    public static String Whatsapp() {
         Scanner entrada = new Scanner(System.in);
-        String resumen;
+        String mensaje;
         String nombre;
         int telefono;
         int edad;
@@ -151,21 +159,21 @@ public class TrabajoFinalJava {
         ciudad = entrada.nextLine();
         System.out.print("Pais :\n> ");
         pais = entrada.nextLine();
-        resumen = String.format("Cuenta de Whatsapp \nUsuario  :"
+        mensaje = String.format("Cuenta de Whatsapp \nUsuario  :"
                 + " %s\nNumero de telefono : %d\nEdad :"
                 + " %d\nCiudad en la que reside: %s\nPais: %s\n",
                 nombre, telefono, edad, ciudad, pais);
-        return resumen;
+        return mensaje;
     }
 
-    public static void crearTelegram() {
+    public static void Telegram() {
         Scanner entrada = new Scanner(System.in);
         String nombre;
         int telefono;
         String pais;
         String ciudad;
         String interes;
-        System.out.println("Creemos una cuenta  >> Telegram<<");
+        System.out.println("Creemos una cuenta >> Telegram<<");
         System.out.print("Nombre de Usuario:\n> ");
         nombre = entrada.nextLine();
         System.out.print("Numero de Telefono:\n> ");
@@ -183,9 +191,9 @@ public class TrabajoFinalJava {
                 nombre, telefono, ciudad, pais, interes);
     }
 
-    public static String crearSignal() {
+    public static String Signal() {
         Scanner entrada = new Scanner(System.in);
-        String resumen;
+        String mensaje;
         String nombre;
         int telefono;
         String pais;
@@ -203,20 +211,18 @@ public class TrabajoFinalJava {
         pais = entrada.nextLine();
         System.out.print("Hobby principal :\n> ");
         hobby = entrada.nextLine();
-        resumen = String.format("Cuenta de Signal \nUsuario "
+        mensaje = String.format("Cuenta de Signal \nUsuario "
                 + " %s\nTelefono: %d\nCiudad en la que reside: "
                 + "%s\nPais : %s\nHobby principal: %s\n",
                 nombre, telefono, ciudad, pais, hobby);
-        return resumen;
-
+        return mensaje;
     }
-
-    public static void crearInstagram() {
+    public static void Instagram() {
         Scanner entrada = new Scanner(System.in);
         String nombre;
-        int edad;
         String ciudad;
         String correo;
+        int    edad;
         System.out.println("Creemos una Cuenta de >>Instagram<<");
         System.out.print("Nombre de usuario:\n> ");
         nombre = entrada.nextLine();
@@ -233,9 +239,9 @@ public class TrabajoFinalJava {
                 nombre, ciudad, edad, correo);
     }
 
-    public static String crearFlickr() {
+    public static String Flickr() {
         Scanner entrada = new Scanner(System.in);
-        String resumen;
+        String mensaje;
         String nombre;
         String correo;
         System.out.println("Creemos una Cuenta de >>Flickr<<");
@@ -243,17 +249,16 @@ public class TrabajoFinalJava {
         nombre = entrada.nextLine();
         System.out.print("Correo Electronico:\n> ");
         correo = entrada.nextLine();
-        resumen = String.format("Cuenta de Flickr \nUsuario: "
+        mensaje = String.format("Cuenta de Flickr \nUsuario: "
                 + "%s\nCorreo electronico: %s\n",
                 nombre, correo);
-        return resumen;
-
+        return mensaje;
     }
-
     public static String obtenerMensaje(int cuentasCreadas) {
         String mensaje = "";
         String mensajeFinal[] = {"Campaña con poca afluencia",
-            "Campaña moderada siga adelante", "Excelente campaña"};
+                                "Campaña moderada siga adelante", 
+                                "Excelente campaña"};
         if (cuentasCreadas >= 1 && cuentasCreadas <= 5) {
             mensaje = mensajeFinal[0];
         } else {
@@ -264,7 +269,6 @@ public class TrabajoFinalJava {
                     mensaje = mensajeFinal[2];
                 }
             }
-
         }
         return mensaje;
     }
